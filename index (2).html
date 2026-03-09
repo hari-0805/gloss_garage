@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gloss Garage Detailing – Mobile Car Wash &amp; Auto Detailing</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+/* =============================================
+   GLOSS GARAGE DETAILING — Main Stylesheet
+   =============================================
+   File: css/style.css
+   ============================================= */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue: #0057FF;
+  --blue-dark: #003FBB;
+  --blue-light: #4D8BFF;
+  --sky: #E8F0FF;
+  --black: #0A0C10;
+  --white: #FFFFFF;
+  --grey: #6B7280;
+  --grey-light: #F4F6FB;
+  --accent: #00D4FF;
+  --green: #00C97A;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* ── NAVBAR ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 6vw;
+  background: rgba(10,12,16,0.85);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: var(--white);
+}
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--blue);
+  color: var(--white) !important;
+  padding: 10px 22px;
+  border-radius: 50px;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--blue-dark) !important; color: var(--white) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: flex-start;
+  padding: 120px 6vw 80px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.hero-video-wrap {
+  position: absolute; inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.hero-video-wrap video {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%; min-height: 100%;
+  width: auto; height: auto;
+  object-fit: cover;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right,
+    rgba(10,12,16,0.88) 0%,
+    rgba(10,12,16,0.70) 50%,
+    rgba(10,12,16,0.45) 100%),
+    radial-gradient(ellipse 80% 70% at 70% 50%, rgba(0,87,255,0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 30% 80%, rgba(0,212,255,0.08) 0%, transparent 60%);
+  z-index: 1;
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: 0.03; z-index: 2;
+  background-image: linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.3);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 50px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.6s ease both;
+  position: relative; z-index: 3;
+}
+.hero-badge::before {
+  content: '●';
+  font-size: 0.5rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 10vw, 8.5rem);
+  line-height: 0.95;
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.7s 0.1s ease both;
+  position: relative; z-index: 3;
+}
+h1 .blue { color: var(--accent); }
+h1 .block { display: block; }
+
+.hero-sub {
+  max-width: 500px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 44px;
+  font-weight: 300;
+  animation: fadeUp 0.7s 0.2s ease both;
+  position: relative; z-index: 3;
+}
+.hero-btns {
+  display: flex; flex-wrap: wrap; gap: 14px;
+  animation: fadeUp 0.7s 0.3s ease both;
+  position: relative; z-index: 3;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--blue);
+  color: var(--white);
+  padding: 16px 34px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 8px 30px rgba(0,87,255,0.35);
+}
+.btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); }
+.btn-primary svg { width: 20px; height: 20px; }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--white);
+  padding: 16px 34px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+.btn-secondary svg { width: 20px; height: 20px; }
+
+.hero-car {
+  width: 100%;
+  max-width: 560px;
+  opacity: 0.85;
+  animation: fadeUp 1s 0.4s ease both;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 20px 60px rgba(0,87,255,0.25));
+}
+
+/* Two-column hero layout */
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+}
+.hero-left { display: flex; flex-direction: column; align-items: flex-start; }
+.hero-right { display: flex; justify-content: center; align-items: center; }
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+}
+
+.hero-stats {
+  display: flex; gap: 48px; flex-wrap: wrap;
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  animation: fadeUp 0.7s 0.45s ease both;
+  position: relative; z-index: 3;
+}
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.6rem;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(24px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+/* ── HOW IT WORKS ── */
+.section {
+  padding: 100px 6vw;
+  position: relative;
+  z-index: 2;
+  background: var(--black);
+}
+.section-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.section-sub {
+  color: rgba(255,255,255,0.55);
+  font-size: 1rem;
+  max-width: 500px;
+  line-height: 1.7;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 60px;
+}
+.step-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 36px 30px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.step-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-4px); }
+.step-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--accent));
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.step-card:hover::before { opacity: 1; }
+.step-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  color: rgba(255,255,255,0.06);
+  line-height: 1;
+  position: absolute; top: 16px; right: 24px;
+}
+.step-icon { font-size: 2rem; margin-bottom: 20px; }
+.step-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+.step-desc {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
+}
+
+/* ── PRICING ── */
+.pricing-section {
+  background: var(--grey-light);
+  color: var(--black);
+  padding: 100px 6vw;
+  position: relative;
+  z-index: 2;
+}
+.pricing-section .section-label { color: var(--blue); }
+.pricing-section .section-title { color: var(--black); }
+.pricing-section .section-sub { color: var(--grey); }
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 56px;
+}
+.plan-card {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 40px 36px;
+  border: 2px solid transparent;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.plan-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,87,255,0.12); }
+.plan-card.featured {
+  border-color: var(--blue);
+  background: var(--black);
+  color: var(--white);
+}
+.plan-badge {
+  display: inline-block;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+}
+.plan-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.plan-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  color: var(--blue);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.plan-card.featured .plan-price { color: var(--accent); }
+.plan-period {
+  font-size: 0.82rem;
+  color: var(--grey);
+  margin-bottom: 30px;
+}
+.plan-card.featured .plan-period { color: rgba(255,255,255,0.5); }
+.plan-features {
+  list-style: none;
+  margin-bottom: 36px;
+}
+.plan-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.93rem;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  color: #374151;
+}
+.plan-card.featured .plan-features li {
+  border-bottom-color: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.8);
+}
+.plan-features li:last-child { border-bottom: none; }
+.check { color: var(--green); font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.plan-btn {
+  display: block;
+  text-align: center;
+  background: var(--blue);
+  color: var(--white);
+  padding: 15px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.plan-btn:hover { background: var(--blue-dark); transform: translateY(-1px); }
+.plan-card:not(.featured) .plan-btn {
+  background: var(--grey-light);
+  color: var(--black);
+  border: 2px solid var(--black);
+}
+.plan-card:not(.featured) .plan-btn:hover { background: var(--black); color: var(--white); }
+
+/* coming soon ribbon */
+.coming-soon-overlay {
+  position: absolute; inset: 0;
+  background: rgba(10,12,16,0.6);
+  backdrop-filter: blur(3px);
+  border-radius: 22px;
+  display: flex; align-items: center; justify-content: center;
+}
+.coming-soon-tag {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border-radius: 50px;
+}
+
+/* ── SERVICE AREA ── */
+.area-section {
+  padding: 100px 6vw;
+  background: #0D0F14;
+  position: relative;
+  z-index: 2;
+}
+.area-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-top: 60px;
+}
+.area-list {
+  list-style: none;
+  display: flex; flex-wrap: wrap; gap: 12px;
+  margin-top: 28px;
+}
+.area-tag {
+  background: rgba(0,87,255,0.1);
+  border: 1px solid rgba(0,87,255,0.25);
+  color: var(--blue-light);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+.area-info {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 36px;
+}
+.info-row {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.info-row:last-child { border-bottom: none; }
+.info-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+.info-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 4px;
+}
+.info-val { font-size: 1rem; font-weight: 500; }
+
+/* ── ORDER CTA ── */
+.order-section {
+  padding: 100px 6vw;
+  text-align: center;
+  background: var(--blue);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+.order-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(0,212,255,0.2) 0%, transparent 70%);
+}
+.order-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.95;
+  margin-bottom: 20px;
+  position: relative;
+}
+.order-sub {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.75);
+  max-width: 520px;
+  margin: 0 auto 44px;
+  line-height: 1.7;
+  position: relative;
+}
+.order-btns {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 16px;
+  position: relative;
+}
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #25D366;
+  color: var(--white);
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+.btn-wa:hover { background: #1eba57; transform: translateY(-2px); }
+.btn-ig {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: var(--white);
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+.btn-ig:hover { opacity: 0.88; transform: translateY(-2px); }
+
+/* ── WHY US ── */
+.why-section {
+  padding: 100px 6vw;
+  background: #0A0C10;
+  position: relative;
+  z-index: 2;
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 56px;
+}
+.why-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 18px;
+  padding: 32px 28px;
+  transition: background 0.25s;
+}
+.why-card:hover { background: rgba(255,255,255,0.06); }
+.why-icon { font-size: 2rem; margin-bottom: 16px; }
+.why-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+.why-desc { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+/* ── GALLERY ── */
+.gallery-section {
+  padding: 100px 6vw;
+  background: #0A0C10;
+  position: relative;
+  z-index: 2;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 56px;
+}
+.gallery-item {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #1a1f2e;
+}
+.gallery-item.large { grid-column: span 2; }
+.gallery-item img {
+  width: 100%; height: 260px;
+  object-fit: cover; display: block;
+  transition: transform 0.45s ease;
+}
+.gallery-item.large img { height: 340px; }
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%);
+  opacity: 0; transition: opacity 0.3s;
+  display: flex; align-items: flex-end; padding: 20px;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-tag {
+  background: var(--blue); color: white;
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 50px;
+}
+
+/* ── CAREERS ── */
+.careers-section {
+  padding: 100px 6vw;
+  background: #0D0F14;
+  position: relative;
+  z-index: 2;
+}
+.careers-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  margin-top: 56px;
+}
+.careers-tagline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  line-height: 1.05;
+  margin-bottom: 18px;
+}
+.careers-tagline span { color: var(--accent); }
+.careers-body {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  margin-bottom: 28px;
+}
+.perks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.perk-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.7);
+}
+.perk-icon { font-size: 1.1rem; flex-shrink: 0; }
+.roles-list { display: flex; flex-direction: column; gap: 16px; }
+.role-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 24px 28px;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 20px;
+  transition: border-color 0.25s, background 0.25s;
+}
+.role-card:hover { border-color: rgba(0,212,255,0.25); background: rgba(0,212,255,0.04); }
+.role-left { flex: 1; }
+.role-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+.role-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.role-tag {
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.tag-location { background: rgba(0,87,255,0.12); border:1px solid rgba(0,87,255,0.25); color: var(--blue-light); }
+.tag-type { background: rgba(0,201,122,0.1); border:1px solid rgba(0,201,122,0.25); color: var(--green); }
+.tag-soon { background: rgba(255,165,0,0.1); border:1px solid rgba(255,165,0,0.25); color: #FFA500; }
+.role-apply {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--blue);
+  color: var(--white);
+  padding: 11px 22px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+.role-apply:hover { background: var(--blue-dark); transform: translateY(-1px); }
+.role-apply.disabled {
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.35);
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #060709;
+  padding: 60px 6vw 40px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-top {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;
+  margin-bottom: 48px;
+}
+.footer-brand .logo { font-size: 1.8rem; margin-bottom: 14px; display: block; }
+.footer-brand p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.4);
+  max-width: 280px;
+  line-height: 1.65;
+}
+.footer-links h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 18px;
+}
+.footer-links ul { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 0.93rem;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.3); }
+.social-links { display: flex; gap: 14px; }
+.social-link {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+.social-link:hover { background: rgba(255,255,255,0.14); }
+
+/* ── FLOATING WHATSAPP ── */
+.float-wa {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+  z-index: 200;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: bouncein 1s 1s ease both;
+}
+.float-wa:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.55); }
+.float-wa svg { width: 30px; height: 30px; fill: white; }
+
+/* ── ANIMATIONS ── */
+@keyframes bouncein {
+  from { opacity:0; transform: scale(0.5); }
+  to   { opacity:1; transform: scale(1); }
+}
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 14px 5vw; }
+  .nav-links { display: none; }
+  .hero { padding: 110px 5vw 60px; }
+  .hero-car { width: 90vw; }
+  .hero-stats { gap: 28px; }
+  .area-grid { grid-template-columns: 1fr; }
+  .footer-top { flex-direction: column; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .careers-intro { grid-template-columns: 1fr; gap: 40px; }
+  .role-card { flex-direction: column; align-items: flex-start; }
+  .perks-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-item.large { grid-column: span 2; }
+  .gallery-item img, .gallery-item.large img { height: 200px; }
+}
+@media (max-width: 480px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item.large { grid-column: span 1; }
+}
+
+/* ── Hero sponsor line ── */
+.hero-sponsor {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 3;
+}
+.hero-sponsor span { color: var(--accent); }
+
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav>
+  <div class="logo">Gloss <span>Garage</span></div>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#area">Service Area</a></li>
+    <li><a href="#careers">Careers</a></li>
+    <li><a href="#order" class="nav-cta">Book Now</a></li>
+  </ul>
+  <!-- Mobile hamburger is injected by js/main.js -->
+</nav>
+
+
+<!-- ══════════════════════════════════════
+     HERO  —  Video Background
+     ┌─────────────────────────────────┐
+     │ To replace video:               │
+     │ Put your file in videos/        │
+     │ named  hero-bg.mp4              │
+     └─────────────────────────────────┘
+══════════════════════════════════════ -->
+<section class="hero" id="home">
+
+  <!-- VIDEO BACKGROUND -->
+  <div class="hero-video-wrap">
+    <video autoplay muted loop playsinline>
+      <!-- ★ REPLACE THIS with your own video: videos/hero-bg.mp4 -->
+      <source src="videos/hero-bg.mp4" type="video/mp4" />
+      <!-- Fallback online video if local file not found -->
+      <source src="https://videos.pexels.com/video-files/3121459/3121459-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-badge">📍 We Come To You · Sathyamangalam, Tamil Nadu</div>
+  <div class="hero-sponsor">
+    Sponsored by <span>RDF</span> · Ride It. Drive It. Feel It.
+  </div>
+
+  <div class="hero-inner">
+    <!-- LEFT: Text -->
+    <div class="hero-left">
+      <h1>
+        <span class="block">YOUR CAR,</span>
+        <span class="block blue">SPOTLESS.</span>
+        <span class="block">AT YOUR</span>
+        <span class="block">DOORSTEP.</span>
+      </h1>
+      <p class="hero-sub">
+        Sathyamangalam's <strong style="color:var(--accent)">first-ever</strong> mobile car wash &amp;
+        auto detailing service — no queue, no travel. We bring professional cleaning straight to your
+        doorstep. Book in 30 seconds via WhatsApp or Instagram.
+      </p>
+      <div class="hero-btns">
+        <a href="https://wa.me/919999999999?text=Hi%20Gloss%20Garage!%20I%20want%20to%20book%20a%20car%20wash%20%F0%9F%9A%97" class="btn-primary" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Book on WhatsApp
+        </a>
+        <a href="https://instagram.com/glossgarage" class="btn-secondary" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          DM on Instagram
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT: Car SVG illustration -->
+    <div class="hero-right">
+      <svg class="hero-car" viewBox="0 0 700 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="350" cy="345" rx="260" ry="20" fill="rgba(0,87,255,0.2)"/>
+        <path d="M100 240 L130 160 L230 110 L400 100 L530 110 L610 160 L650 240 L650 285 L100 285 Z" fill="#1a1f2e" stroke="rgba(0,212,255,0.4)" stroke-width="1.5"/>
+        <path d="M220 160 L260 115 L390 105 L500 115 L545 160 Z" fill="#222840" stroke="rgba(0,212,255,0.25)" stroke-width="1"/>
+        <path d="M265 158 L290 120 L390 110 L480 120 L508 158 Z" fill="rgba(0,212,255,0.1)" stroke="rgba(0,212,255,0.35)" stroke-width="1"/>
+        <path d="M218 158 L262 158 L265 130 L235 155 Z" fill="rgba(0,212,255,0.08)" stroke="rgba(0,212,255,0.2)" stroke-width="1"/>
+        <path d="M510 158 L545 158 L530 130 L508 130 Z" fill="rgba(0,212,255,0.08)" stroke="rgba(0,212,255,0.2)" stroke-width="1"/>
+        <path d="M110 220 Q380 205 640 220" stroke="rgba(255,255,255,0.08)" stroke-width="2" fill="none"/>
+        <path d="M640 200 L660 200 L665 215 L648 215 Z" fill="rgba(255,230,100,0.9)"/>
+        <path d="M640 222 L658 222 L660 230 L640 230 Z" fill="rgba(255,150,50,0.7)"/>
+        <path d="M100 200 L82 200 L78 215 L100 215 Z" fill="rgba(255,50,50,0.85)"/>
+        <path d="M100 222 L84 222 L82 230 L100 230 Z" fill="rgba(255,50,50,0.6)"/>
+        <circle cx="200" cy="295" r="52" fill="#0f1117" stroke="rgba(0,212,255,0.5)" stroke-width="2"/>
+        <circle cx="200" cy="295" r="36" fill="#161b27" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <circle cx="200" cy="295" r="14" fill="rgba(0,212,255,0.15)" stroke="rgba(0,212,255,0.5)" stroke-width="1.5"/>
+        <circle cx="520" cy="295" r="52" fill="#0f1117" stroke="rgba(0,212,255,0.5)" stroke-width="2"/>
+        <circle cx="520" cy="295" r="36" fill="#161b27" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <circle cx="520" cy="295" r="14" fill="rgba(0,212,255,0.15)" stroke="rgba(0,212,255,0.5)" stroke-width="1.5"/>
+        <line x1="200" y1="259" x2="200" y2="275" stroke="rgba(0,212,255,0.4)" stroke-width="2"/>
+        <line x1="200" y1="315" x2="200" y2="331" stroke="rgba(0,212,255,0.4)" stroke-width="2"/>
+        <line x1="164" y1="295" x2="180" y2="295" stroke="rgba(0,212,255,0.4)" stroke-width="2"/>
+        <line x1="220" y1="295" x2="236" y2="295" stroke="rgba(0,212,255,0.4)" stroke-width="2"/>
+        <line x1="520" y1="259" x2="520" y2="275" stroke="rgba(0,212,255,0.4)" stroke-width="2"/>
+        <line x1="520" y1="315" x2="520" y2="331" stroke="rgba(0,212,255,0.4)" stroke-width="2"/>
+        <line x1="484" y1="295" x2="500" y2="295" stroke="rgba(0,212,255,0.4)" stroke-width="2"/>
+        <line x1="540" y1="295" x2="556" y2="295" stroke="rgba(0,212,255,0.4)" stroke-width="2"/>
+        <circle cx="310" cy="140" r="6" fill="rgba(0,212,255,0.6)"/>
+        <circle cx="345" cy="122" r="4" fill="rgba(255,255,255,0.5)"/>
+        <circle cx="378" cy="134" r="5" fill="rgba(0,212,255,0.5)"/>
+        <circle cx="288" cy="152" r="3" fill="rgba(255,255,255,0.6)"/>
+        <circle cx="432" cy="128" r="4" fill="rgba(0,212,255,0.55)"/>
+        <circle cx="462" cy="145" r="6" fill="rgba(255,255,255,0.35)"/>
+        <line x1="375" y1="165" x2="372" y2="285" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+        <rect x="300" y="210" width="30" height="6" rx="3" fill="rgba(255,255,255,0.12)"/>
+        <rect x="415" y="210" width="30" height="6" rx="3" fill="rgba(255,255,255,0.12)"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">₹400</div>
+      <div class="stat-label">Starting From</div>
+    </div>
+    <div>
+      <div class="stat-num">30s</div>
+      <div class="stat-label">To Book</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Doorstep Service</div>
+    </div>
+    <div>
+      <div class="stat-num">2×</div>
+      <div class="stat-label">Foam Wash</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════ -->
+<section class="section" id="how">
+  <div class="section-label">Simple Process</div>
+  <h2 class="section-title">HOW IT WORKS</h2>
+  <p class="section-sub">Four easy steps from booking to a sparkling clean car — all at your location.</p>
+
+  <div class="steps">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-icon">📲</div>
+      <div class="step-title">Send a Message</div>
+      <p class="step-desc">Message us on WhatsApp or Instagram with your car type, location, and preferred time slot.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-icon">✅</div>
+      <div class="step-title">Order Confirmed</div>
+      <p class="step-desc">We'll confirm your booking instantly and share an estimated arrival time.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-icon">🚗</div>
+      <div class="step-title">We Come To You</div>
+      <p class="step-desc">Our team arrives at your home, office, or any location you choose — on time.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <div class="step-icon">✨</div>
+      <div class="step-title">Enjoy a Clean Car</div>
+      <p class="step-desc">Sit back and relax. We handle everything and leave your car spotless.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     GALLERY
+     ┌─────────────────────────────────┐
+     │ To replace images:              │
+     │ Put your photos in images/      │
+     │ named  gallery-1.jpg  (large)   │
+     │        gallery-2.jpg            │
+     │        gallery-3.jpg            │
+     │        gallery-4.jpg            │
+     │        gallery-5.jpg            │
+     │        gallery-6.jpg            │
+     │ See images/README.txt           │
+     └─────────────────────────────────┘
+══════════════════════════════════════ -->
+<section class="gallery-section" id="gallery">
+  <div class="section-label">Our Work</div>
+  <h2 class="section-title">SEE THE<br><span style="color:var(--accent);">DIFFERENCE</span></h2>
+  <p class="section-sub">Professional results every time — foam wash, interior vacuum, and fresh air throughout.</p>
+
+  <div class="gallery-grid">
+
+    <div class="gallery-item large">
+      <!-- ★ REPLACE: gallery-1.jpg (large hero photo, 900×500px) -->
+      <img src="images/gallery-1.jpg"
+           onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=500&fit=crop&fm=jpg&q=80'"
+           alt="Double foam car wash" />
+      <div class="gallery-overlay"><span class="gallery-tag">🫧 Double Foam Wash</span></div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- ★ REPLACE: gallery-2.jpg (500×400px) -->
+      <img src="images/gallery-2.jpg"
+           onerror="this.src='https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=500&h=400&fit=crop&fm=jpg&q=80'"
+           alt="Car exterior wash" />
+      <div class="gallery-overlay"><span class="gallery-tag">✨ Exterior Wash</span></div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- ★ REPLACE: gallery-3.jpg (500×400px) -->
+      <img src="images/gallery-3.jpg"
+           onerror="this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500&h=400&fit=crop&fm=jpg&q=80'"
+           alt="Car interior vacuum" />
+      <div class="gallery-overlay"><span class="gallery-tag">🧹 Interior Vacuum</span></div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- ★ REPLACE: gallery-4.jpg (500×400px) -->
+      <img src="images/gallery-4.jpg"
+           onerror="this.src='https://images.unsplash.com/photo-1599256871679-6a193d9e7f27?w=500&h=400&fit=crop&fm=jpg&q=80'"
+           alt="Car detailing" />
+      <div class="gallery-overlay"><span class="gallery-tag">💎 Auto Detailing</span></div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- ★ REPLACE: gallery-5.jpg (500×400px) -->
+      <img src="images/gallery-5.jpg"
+           onerror="this.src='https://images.unsplash.com/photo-1623600989906-6aae5aa131d4?w=500&h=400&fit=crop&fm=jpg&q=80'"
+           alt="Mobile car wash at home" />
+      <div class="gallery-overlay"><span class="gallery-tag">🏠 At Your Doorstep</span></div>
+    </div>
+
+    <div class="gallery-item">
+      <!-- ★ REPLACE: gallery-6.jpg (500×400px) -->
+      <img src="images/gallery-6.jpg"
+           onerror="this.src='https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=500&h=400&fit=crop&fm=jpg&q=80'"
+           alt="Clean car result" />
+      <div class="gallery-overlay"><span class="gallery-tag">🌟 Spotless Result</span></div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top:52px;">
+    <p style="color:rgba(255,255,255,0.45); font-size:0.95rem; margin-bottom:20px;">Want results like this? Book your wash today.</p>
+    <a href="https://wa.me/919999999999?text=Hi%20Gloss%20Garage!%20I%20want%20to%20book%20a%20car%20wash%20%F0%9F%9A%97" class="btn-primary" target="_blank" style="display:inline-flex; gap:10px; align-items:center;">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Book Your Wash Now
+    </a>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     PRICING
+══════════════════════════════════════ -->
+<section class="pricing-section" id="pricing">
+  <div class="section-label">Transparent Pricing</div>
+  <h2 class="section-title">CHOOSE YOUR PLAN</h2>
+  <p class="section-sub">Simple, honest pricing with no hidden charges. Pay after the service.</p>
+
+  <div class="plans">
+
+    <!-- BASE PLAN -->
+    <div class="plan-card featured">
+      <div class="plan-badge">⭐ Most Popular</div>
+      <div class="plan-name">Base Wash</div>
+      <div class="plan-price">₹400</div>
+      <div class="plan-period">Per service · Any car</div>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> Double foam exterior wash</li>
+        <li><span class="check">✓</span> Interior cleaning</li>
+        <li><span class="check">✓</span> Vacuum clean (full interior)</li>
+        <li><span class="check">✓</span> Air freshener applied</li>
+        <li><span class="check">✓</span> Dashboard &amp; console wipe</li>
+        <li><span class="check">✓</span> Doorstep service included</li>
+      </ul>
+      <a href="https://wa.me/919999999999?text=Hi%20Gloss%20Garage!%20I%20want%20the%20Base%20Wash%20plan%20%E2%82%B9400%20%F0%9F%9A%97" class="plan-btn" target="_blank">
+        Book Base Wash →
+      </a>
+    </div>
+
+    <!-- PREMIUM PLAN -->
+    <div class="plan-card" style="position:relative;">
+      <div class="plan-name">Premium Wash</div>
+      <div class="plan-price" style="color:var(--blue)">₹700</div>
+      <div class="plan-period">Per service · Any car</div>
+      <ul class="plan-features">
+        <li><span class="check" style="color:var(--blue)">✓</span> Everything in Base</li>
+        <li><span class="check" style="color:var(--blue)">✓</span> Tyre &amp; rim cleaning</li>
+        <li><span class="check" style="color:var(--blue)">✓</span> Glass cleaning (in &amp; out)</li>
+        <li><span class="check" style="color:var(--blue)">✓</span> Seat deep clean</li>
+        <li><span class="check" style="color:var(--blue)">✓</span> Engine bay rinse</li>
+        <li><span class="check" style="color:var(--blue)">✓</span> Priority scheduling</li>
+      </ul>
+      <a href="https://wa.me/919999999999?text=Hi%20Gloss%20Garage!%20I%20want%20the%20Premium%20Wash%20plan%20%E2%82%B9700%20%F0%9F%9A%97" class="plan-btn" target="_blank">
+        Book Premium Wash →
+      </a>
+      <div class="coming-soon-overlay"><span class="coming-soon-tag">Coming Soon</span></div>
+    </div>
+
+    <!-- MONTHLY PLAN -->
+    <div class="plan-card" style="position:relative;">
+      <div class="plan-name">Monthly Plan</div>
+      <div class="plan-price" style="color:var(--blue)">₹1400</div>
+      <div class="plan-period">4 washes / month</div>
+      <ul class="plan-features">
+        <li><span class="check" style="color:var(--blue)">✓</span> 4× Base Wash services</li>
+        <li><span class="check" style="color:var(--blue)">✓</span> Save ₹200 monthly</li>
+        <li><span class="check" style="color:var(--blue)">✓</span> Flexible scheduling</li>
+        <li><span class="check" style="color:var(--blue)">✓</span> WhatsApp priority slot</li>
+        <li><span class="check" style="color:var(--blue)">✓</span> Loyalty rewards</li>
+        <li><span class="check" style="color:var(--blue)">✓</span> Dedicated wash team</li>
+      </ul>
+      <a href="https://wa.me/919999999999?text=Hi%20Gloss%20Garage!%20Interested%20in%20the%20Monthly%20Plan%20%F0%9F%9A%97" class="plan-btn" target="_blank">
+        Enquire Now →
+      </a>
+      <div class="coming-soon-overlay"><span class="coming-soon-tag">Coming Soon</span></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     WHY US
+══════════════════════════════════════ -->
+<section class="why-section">
+  <div class="section-label">Why Gloss Garage</div>
+  <h2 class="section-title">THE GLOSS GARAGE DETAILING PROMISE</h2>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">📍</div>
+      <div class="why-title">We Come To You</div>
+      <p class="why-desc">No need to drive anywhere. We show up at your home, office, or any address you choose.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <div class="why-title">Fast &amp; Reliable</div>
+      <p class="why-desc">Quick booking confirmation via WhatsApp. We arrive on time and work efficiently.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💧</div>
+      <div class="why-title">Professional Quality</div>
+      <p class="why-desc">We use double foam wash technique and professional-grade products for a showroom finish.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💰</div>
+      <div class="why-title">Affordable Pricing</div>
+      <p class="why-desc">Premium car wash service starting at just ₹400 — the best value in town.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🏠</div>
+      <div class="why-title">Zero Hassle</div>
+      <p class="why-desc">No waiting, no queues, no commuting. Book, relax, and enjoy a clean car.</p>
+    </div>
+    <div class="why-card" style="border-color:rgba(0,212,255,0.2); background:rgba(0,212,255,0.05);">
+      <div class="why-icon">🥇</div>
+      <div class="why-title" style="color:var(--accent);">First In The Area</div>
+      <p class="why-desc">Gloss Garage is Sathyamangalam's very first doorstep car wash — a brand new experience that no one else offers here yet!</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SERVICE AREA
+══════════════════════════════════════ -->
+<section class="area-section" id="area">
+  <div class="section-label">Coverage</div>
+  <h2 class="section-title">WHERE WE SERVE</h2>
+
+  <div style="margin-top:32px; background:linear-gradient(135deg,rgba(0,87,255,0.15),rgba(0,212,255,0.1)); border:1px solid rgba(0,212,255,0.25); border-radius:16px; padding:20px 28px; display:flex; align-items:center; gap:16px; max-width:680px;">
+    <span style="font-size:2rem;">🏆</span>
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:700; letter-spacing:1px; color:var(--accent); text-transform:uppercase;">Sathyamangalam's First Doorstep Car Wash</div>
+      <div style="font-size:0.88rem; color:rgba(255,255,255,0.55); margin-top:4px;">No one else offers this in your area — we're bringing a brand new service right to your home!</div>
+    </div>
+  </div>
+
+  <div class="area-grid">
+    <div>
+      <p class="section-sub" style="margin-top:0;">Currently serving Sathyamangalam. Expanding to Gobichettipalayam very soon!</p>
+      <ul class="area-list">
+        <li class="area-tag" style="background:rgba(0,212,255,0.12); border-color:rgba(0,212,255,0.35); color:var(--accent);">✅ Sathyamangalam</li>
+        <li class="area-tag" style="background:rgba(255,165,0,0.08); border-color:rgba(255,165,0,0.25); color:#FFA500;">🔜 Gobichettipalayam</li>
+        <li class="area-tag">📍 More Areas Soon →</li>
+      </ul>
+      <p style="margin-top:24px; font-size:0.88rem; color:rgba(255,255,255,0.4);">
+        Not sure if we cover your street? Just message us — we'll confirm instantly!
+      </p>
+    </div>
+
+    <div class="area-info">
+      <div class="info-row">
+        <div class="info-icon">🕐</div>
+        <div>
+          <div class="info-label">Working Hours</div>
+          <div class="info-val">Saturday &amp; Sunday · 7:00 AM – 8:00 PM</div>
+          <div style="margin-top:5px; display:inline-flex; align-items:center; gap:6px; background:rgba(255,165,0,0.1); border:1px solid rgba(255,165,0,0.25); color:#FFA500; font-size:0.75rem; font-weight:600; padding:3px 10px; border-radius:50px; letter-spacing:0.5px;">🔜 Weekdays Coming Soon</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📲</div>
+        <div>
+          <div class="info-label">How To Book</div>
+          <div class="info-val">WhatsApp or Instagram DM only</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">💳</div>
+        <div>
+          <div class="info-label">Payment</div>
+          <div class="info-val">Cash / UPI · Pay after service</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🚗</div>
+        <div>
+          <div class="info-label">Car Types</div>
+          <div class="info-val">Hatchback · Sedan · SUV · MUV</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     ORDER CTA
+══════════════════════════════════════ -->
+<section class="order-section" id="order">
+  <h2 class="order-title">READY FOR A<br>CLEAN RIDE?</h2>
+  <p class="order-sub">
+    Send us a quick message on WhatsApp or Instagram to confirm your booking.
+    We'll take it from there. It only takes 30 seconds!
+  </p>
+  <div class="order-btns">
+    <a href="https://wa.me/919999999999?text=Hi%20Gloss%20Garage!%20I%20want%20to%20book%20a%20car%20wash%20%F0%9F%9A%97%0AMy%20car%3A%20%0ALocation%3A%20%0ADate%2FTime%3A%20" class="btn-wa" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      WhatsApp Us
+    </a>
+    <a href="https://instagram.com/glossgarage" class="btn-ig" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      DM on Instagram
+    </a>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CAREERS
+══════════════════════════════════════ -->
+<section class="careers-section" id="careers">
+  <div class="section-label">Join The Team</div>
+  <h2 class="section-title">CAREERS AT<br><span style="color:var(--accent)">GLOSS GARAGE DETAILING</span></h2>
+
+  <div class="careers-intro">
+    <div>
+      <div class="careers-tagline">
+        Be part of<br><span>something new</span><br>in Sathyamangalam.
+      </div>
+      <p class="careers-body">
+        Gloss Garage is the first doorstep car wash in this area — and we're just getting started.
+        We're looking for energetic, hardworking people who take pride in their work and want
+        to grow with us as we expand across the region.
+      </p>
+      <p class="careers-body" style="margin-top:-12px;">
+        Currently operating weekends, with full-week operations coming soon — meaning more
+        shifts, more opportunities, and a career that grows with you.
+      </p>
+      <div class="perks-grid">
+        <div class="perk-item"><span class="perk-icon">💸</span> Weekly pay, no delays</div>
+        <div class="perk-item"><span class="perk-icon">📅</span> Weekend shifts to start</div>
+        <div class="perk-item"><span class="perk-icon">📈</span> Grow as we grow</div>
+        <div class="perk-item"><span class="perk-icon">🤝</span> Friendly team culture</div>
+        <div class="perk-item"><span class="perk-icon">🏙️</span> Work in your own area</div>
+        <div class="perk-item"><span class="perk-icon">🎓</span> On-the-job training</div>
+      </div>
+      <a href="https://wa.me/919999999999?text=Hi%20Gloss%20Garage!%20I%20am%20interested%20in%20joining%20your%20team%20%F0%9F%9A%97%0AMy%20name%3A%20%0AAge%3A%20%0AAvailability%3A%20" class="btn-primary" target="_blank" style="display:inline-flex;">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Apply via WhatsApp
+      </a>
+    </div>
+
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:20px;">Open Positions</div>
+      <div class="roles-list">
+
+        <div class="role-card">
+          <div class="role-left">
+            <div class="role-title">Car Wash Technician</div>
+            <div class="role-meta">
+              <span class="role-tag tag-location">📍 Sathyamangalam</span>
+              <span class="role-tag tag-type">✅ Hiring Now</span>
+              <span class="role-tag tag-type">📅 Weekends</span>
+            </div>
+          </div>
+          <a href="https://wa.me/919999999999?text=Hi!%20I%20want%20to%20apply%20for%20Car%20Wash%20Technician%20at%20Gloss%20Garage%20%F0%9F%9A%97%0AMy%20name%3A%20%0AAge%3A%20" class="role-apply" target="_blank">Apply →</a>
+        </div>
+
+        <div class="role-card" style="opacity:0.6;">
+          <div class="role-left">
+            <div class="role-title">Booking &amp; Customer Support</div>
+            <div class="role-meta">
+              <span class="role-tag tag-location">📍 Remote / Sathyamangalam</span>
+              <span class="role-tag tag-soon">🔜 Opening Soon</span>
+              <span class="role-tag tag-soon">📅 Weekends</span>
+            </div>
+          </div>
+          <span class="role-apply disabled">Coming Soon</span>
+        </div>
+
+        <div class="role-card" style="opacity:0.6;">
+          <div class="role-left">
+            <div class="role-title">Senior Technician — Gobichettipalayam</div>
+            <div class="role-meta">
+              <span class="role-tag tag-location">📍 Gobichettipalayam</span>
+              <span class="role-tag tag-soon">🔜 Opening Soon</span>
+              <span class="role-tag tag-soon">📅 Weekdays</span>
+            </div>
+          </div>
+          <span class="role-apply disabled">Coming Soon</span>
+        </div>
+
+        <div class="role-card" style="opacity:0.6;">
+          <div class="role-left">
+            <div class="role-title">Area Supervisor</div>
+            <div class="role-meta">
+              <span class="role-tag tag-location">📍 Multiple Locations</span>
+              <span class="role-tag tag-soon">🔜 Opening Soon</span>
+              <span class="role-tag tag-soon">📅 Full-Time</span>
+            </div>
+          </div>
+          <span class="role-apply disabled">Coming Soon</span>
+        </div>
+
+      </div>
+      <p style="margin-top:20px; font-size:0.82rem; color:rgba(255,255,255,0.35); line-height:1.6;">
+        Don't see the right role? Send us your details on WhatsApp anyway — we're always growing and looking for great people.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo">Gloss <span>Garage</span></span>
+      <p style="font-size:0.8rem; color:rgba(255,255,255,0.5); letter-spacing:0.5px; font-family:'DM Sans',sans-serif; margin-bottom:6px; font-weight:500;">Mobile Car Wash &amp; Auto Detailing</p>
+      <p style="font-size:0.75rem; color:var(--accent); letter-spacing:1.5px; text-transform:uppercase; font-family:'Barlow Condensed',sans-serif; margin-bottom:12px;">Sponsored by RDF · Ride It. Drive It. Feel It.</p>
+      <p>Sathyamangalam's first mobile car wash &amp; auto detailing — delivered right to your doorstep. Coming soon to Gobichettipalayam!</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#area">Service Area</a></li>
+        <li><a href="#careers">Careers</a></li>
+        <li><a href="#order">Book Now</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><a href="https://wa.me/919999999999" target="_blank">📲 WhatsApp</a></li>
+        <li><a href="https://instagram.com/glossgarage" target="_blank">📸 Instagram</a></li>
+        <li><a href="#area">📍 Sathyamangalam, Tamil Nadu</a></li>
+        <li><a href="#area">🕐 Sat &amp; Sun · 7AM – 8PM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Gloss Garage Detailing. All rights reserved. · Sponsored by RDF · Sathyamangalam, Tamil Nadu</p>
+    <div class="social-links">
+      <a href="https://wa.me/919999999999" class="social-link" target="_blank" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      </a>
+      <a href="https://instagram.com/glossgarage" class="social-link" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ── FLOATING WHATSAPP BUTTON ── -->
+<a href="https://wa.me/919999999999?text=Hi%20Gloss%20Garage!%20I%20want%20to%20book%20a%20car%20wash%20%F0%9F%9A%97" class="float-wa" target="_blank" title="Book on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+
+<script>
+/* =============================================
+   GLOSS GARAGE DETAILING — Main JavaScript
+   =============================================
+   File: js/main.js
+   ============================================= */
+
+// ── Smooth navbar shadow on scroll ──
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 40) {
+    nav.style.background = 'rgba(10,12,16,0.97)';
+    nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.4)';
+  } else {
+    nav.style.background = 'rgba(10,12,16,0.85)';
+    nav.style.boxShadow = 'none';
+  }
+});
+
+// ── Scroll-reveal animation for sections ──
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(
+  '.step-card, .plan-card, .why-card, .gallery-item, .role-card, .perk-item'
+).forEach(el => {
+  el.classList.add('reveal');
+  revealObserver.observe(el);
+});
+
+// Inject reveal CSS dynamically
+const revealStyle = document.createElement('style');
+revealStyle.textContent = `
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+document.head.appendChild(revealStyle);
+
+// ── Mobile menu toggle ──
+// Creates a hamburger button for mobile since nav-links are hidden on mobile
+const nav = document.querySelector('nav');
+const navLinks = document.querySelector('.nav-links');
+
+const hamburger = document.createElement('button');
+hamburger.innerHTML = `
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="26" height="26">
+    <line x1="3" y1="6"  x2="21" y2="6"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <line x1="3" y1="18" x2="21" y2="18"/>
+  </svg>`;
+hamburger.style.cssText = `
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+`;
+nav.appendChild(hamburger);
+
+// Mobile menu overlay
+const mobileMenu = document.createElement('div');
+mobileMenu.style.cssText = `
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,12,16,0.97);
+  z-index: 99;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+`;
+mobileMenu.innerHTML = `
+  <button id="close-menu" style="position:absolute;top:22px;right:6vw;background:none;border:none;cursor:pointer;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="28" height="28">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <a href="#how"     style="color:white;text-decoration:none;font-size:1.6rem;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;">How It Works</a>
+  <a href="#gallery" style="color:white;text-decoration:none;font-size:1.6rem;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;">Gallery</a>
+  <a href="#pricing" style="color:white;text-decoration:none;font-size:1.6rem;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;">Pricing</a>
+  <a href="#area"    style="color:white;text-decoration:none;font-size:1.6rem;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;">Service Area</a>
+  <a href="#careers" style="color:white;text-decoration:none;font-size:1.6rem;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;">Careers</a>
+  <a href="#order"   style="color:white;text-decoration:none;font-size:1.6rem;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;background:#0057FF;padding:14px 36px;border-radius:50px;">Book Now</a>
+`;
+document.body.appendChild(mobileMenu);
+
+// Show hamburger on small screens
+const checkMobile = () => {
+  hamburger.style.display = window.innerWidth <= 768 ? 'block' : 'none';
+};
+checkMobile();
+window.addEventListener('resize', checkMobile);
+
+hamburger.addEventListener('click', () => {
+  mobileMenu.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+});
+
+document.getElementById('close-menu').addEventListener('click', closeMobileMenu);
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
+});
+
+function closeMobileMenu() {
+  mobileMenu.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+</script>
+
+</body>
+</html>
