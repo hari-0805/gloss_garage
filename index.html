@@ -216,6 +216,8 @@ h1 .block { display: block; }
   position: relative;
   z-index: 3;
 }
+.hero-left { display: flex; flex-direction: column; align-items: flex-start; }
+.hero-right { display: flex; justify-content: center; align-items: center; }
 
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; }
@@ -720,6 +722,73 @@ h1 .block { display: block; }
   pointer-events: none;
 }
 
+/* ── REVIEWS ── */
+.reviews-section {
+  padding: 100px 6vw;
+  background: #0D0F14;
+  position: relative;
+  z-index: 2;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 56px;
+}
+.review-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.review-card:hover { border-color: rgba(0,212,255,0.25); transform: translateY(-4px); }
+.review-card.featured-review {
+  border-color: rgba(0,87,255,0.4);
+  background: rgba(0,87,255,0.06);
+}
+.review-stars {
+  color: #FFD700;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+.review-text {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.75;
+  flex: 1;
+  font-style: italic;
+}
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+.review-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--accent));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  flex-shrink: 0;
+}
+.review-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--white);
+}
+.review-location {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 2px;
+}
+
 /* ── FOOTER ── */
 footer {
   background: #060709;
@@ -846,6 +915,7 @@ footer {
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#area">Service Area</a></li>
     <li><a href="#careers">Careers</a></li>
+    <li><a href="#reviews">Reviews</a></li>
     <li><a href="#order" class="nav-cta">Book Now</a></li>
   </ul>
   <!-- Mobile hamburger is injected by js/main.js -->
@@ -893,7 +963,7 @@ footer {
         doorstep. Book in 30 seconds via WhatsApp or Instagram.
       </p>
       <div class="hero-btns">
-        <a href="https://wa.me/919952400956?text=Hi%20Gloss%20Garage!%20I%20want%20to%20book%20a%20car%20wash%20%F0%9F%9A%97" class="btn-primary" target="_blank">
+        <a href="https://wa.me/919999999999?text=Hi%20Gloss%20Garage!%20I%20want%20to%20book%20a%20car%20wash%20%F0%9F%9A%97" class="btn-primary" target="_blank">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           Book on WhatsApp
         </a>
@@ -902,11 +972,7 @@ footer {
           DM on Instagram
         </a>
       </div>
-    </div>
-
-    <!-- RIGHT: Car SVG illustration -->
-   
-  </div>
+    </div></div>
 
   <!-- Stats bar -->
   <div class="hero-stats">
@@ -1034,7 +1100,7 @@ footer {
 
   <div style="text-align:center; margin-top:52px;">
     <p style="color:rgba(255,255,255,0.45); font-size:0.95rem; margin-bottom:20px;">Want results like this? Book your wash today.</p>
-    <a href="https://wa.me/919952400956?text=Hi%20Gloss%20Garage!%20I%20want%20to%20book%20a%20car%20wash%20%F0%9F%9A%97" class="btn-primary" target="_blank" style="display:inline-flex; gap:10px; align-items:center;">
+    <a href="https://wa.me/919999999999?text=Hi%20Gloss%20Garage!%20I%20want%20to%20book%20a%20car%20wash%20%F0%9F%9A%97" class="btn-primary" target="_blank" style="display:inline-flex; gap:10px; align-items:center;">
       <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
       Book Your Wash Now
     </a>
@@ -1066,7 +1132,7 @@ footer {
         <li><span class="check">✓</span> Dashboard &amp; console wipe</li>
         <li><span class="check">✓</span> Doorstep service included</li>
       </ul>
-      <a href="https://wa.me/919952400956?text=Hi%20Gloss%20Garage!%20I%20want%20the%20Base%20Wash%20plan%20%E2%82%B9400%20%F0%9F%9A%97" class="plan-btn" target="_blank">
+      <a href="https://wa.me/919999999999?text=Hi%20Gloss%20Garage!%20I%20want%20the%20Base%20Wash%20plan%20%E2%82%B9400%20%F0%9F%9A%97" class="plan-btn" target="_blank">
         Book Base Wash →
       </a>
     </div>
@@ -1084,7 +1150,7 @@ footer {
         <li><span class="check" style="color:var(--blue)">✓</span> Engine bay rinse</li>
         <li><span class="check" style="color:var(--blue)">✓</span> Priority scheduling</li>
       </ul>
-      <a href="https://wa.me/919952400956?text=Hi%20Gloss%20Garage!%20I%20want%20the%20Premium%20Wash%20plan%20%E2%82%B9700%20%F0%9F%9A%97" class="plan-btn" target="_blank">
+      <a href="https://wa.me/919999999999?text=Hi%20Gloss%20Garage!%20I%20want%20the%20Premium%20Wash%20plan%20%E2%82%B9700%20%F0%9F%9A%97" class="plan-btn" target="_blank">
         Book Premium Wash →
       </a>
       <div class="coming-soon-overlay"><span class="coming-soon-tag">Coming Soon</span></div>
@@ -1332,6 +1398,101 @@ footer {
         Don't see the right role? Send us your details on WhatsApp anyway — we're always growing and looking for great people.
       </p>
     </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     REVIEWS
+══════════════════════════════════════ -->
+<section class="reviews-section" id="reviews">
+  <div class="section-label">Happy Customers</div>
+  <h2 class="section-title">WHAT PEOPLE <span style="color:var(--accent)">SAY</span></h2>
+  <p class="section-sub">Real feedback from our customers in Sathyamangalam.</p>
+
+  <div class="reviews-grid">
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Amazing service! They came right to my house and my car looks brand new. Never going to a car wash again!"</p>
+      <div class="review-author">
+        <div class="review-avatar">R</div>
+        <div>
+          <div class="review-name">Ramesh K.</div>
+          <div class="review-location">Sathyamangalam</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card featured-review">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Booked on WhatsApp in 2 minutes. The team arrived on time and did a fantastic job on my SUV. Highly recommend!"</p>
+      <div class="review-author">
+        <div class="review-avatar">P</div>
+        <div>
+          <div class="review-name">Priya S.</div>
+          <div class="review-location">Sathyamangalam</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Very professional team. Double foam wash made my car shine. Worth every rupee at ₹400!"</p>
+      <div class="review-author">
+        <div class="review-avatar">M</div>
+        <div>
+          <div class="review-name">Muthu V.</div>
+          <div class="review-location">Sathyamangalam</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Superb doorstep service. My office car was cleaned in under an hour. Will definitely book again!"</p>
+      <div class="review-author">
+        <div class="review-avatar">A</div>
+        <div>
+          <div class="review-name">Arun T.</div>
+          <div class="review-location">Sathyamangalam</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"First time trying a mobile car wash — totally impressed. Interior cleaning was spotless. Great work guys!"</p>
+      <div class="review-author">
+        <div class="review-avatar">S</div>
+        <div>
+          <div class="review-name">Sudha M.</div>
+          <div class="review-location">Sathyamangalam</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"No more waiting at car wash queues! Gloss Garage comes to you. Best service in Sathyamangalam!"</p>
+      <div class="review-author">
+        <div class="review-avatar">K</div>
+        <div>
+          <div class="review-name">Karthik R.</div>
+          <div class="review-location">Sathyamangalam</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Leave a review CTA -->
+  <div style="text-align:center; margin-top:56px;">
+    <p style="color:rgba(255,255,255,0.45); font-size:0.95rem; margin-bottom:20px;">Had a great experience? Share your feedback!</p>
+    <a href="https://wa.me/919999999999?text=Hi%20Gloss%20Garage!%20I%20want%20to%20share%20my%20feedback%20%F0%9F%9A%97" class="btn-primary" target="_blank" style="display:inline-flex; gap:10px; align-items:center;">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Leave a Review
+    </a>
   </div>
 </section>
 
