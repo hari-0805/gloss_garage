@@ -84,26 +84,25 @@ nav {
 }
 .hero-video-wrap {
   position: absolute; inset: 0;
-  z-index: -2;
+  z-index: 0;
   overflow: hidden;
 }
 .hero-video-wrap video {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   object-fit: cover;
+  z-index: 0;
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background: 
-    linear-gradient(135deg, rgba(0,87,255,0.25) 0%, transparent 50%),
-    linear-gradient(225deg, rgba(0,212,255,0.2) 0%, transparent 50%),
-    linear-gradient(to bottom, rgba(10,12,16,0.6) 0%, rgba(10,12,16,0.95) 100%),
-    #0A0C10;
+  background: linear-gradient(to right,
+    rgba(10,12,16,0.75) 0%,
+    rgba(10,12,16,0.55) 50%,
+    rgba(10,12,16,0.35) 100%);
   z-index: 1;
-  animation: bgShift 8s ease-in-out infinite alternate;
 }
-@keyframes bgShift {
-  0%   { background: linear-gradient(135deg, rgba(0,87,255,0.3) 0%, transparent 60%), linear-gradient(225deg, rgba(0,212,255,0.15) 0%, transparent 60%), linear-gradient(to bottom, rgba(10,12,16,0.5) 0%, rgba(10,12,16,0.98) 100%), #0A0C10; }
+
   50%  { background: linear-gradient(160deg, rgba(0,60,200,0.35) 0%, transparent 55%), linear-gradient(260deg, rgba(0,180,255,0.2) 0%, transparent 55%), linear-gradient(to bottom, rgba(10,12,16,0.55) 0%, rgba(10,12,16,0.98) 100%), #080A0F; }
   100% { background: linear-gradient(120deg, rgba(0,100,255,0.28) 0%, transparent 58%), linear-gradient(240deg, rgba(0,220,255,0.18) 0%, transparent 58%), linear-gradient(to bottom, rgba(10,12,16,0.5) 0%, rgba(10,12,16,0.98) 100%), #0A0C10; }
 }
@@ -867,9 +866,10 @@ footer {
 
   <!-- VIDEO BACKGROUND -->
 
-<div class="hero-video-wrap">
-    <video autoplay muted loop playsinline>
-      <source src="./hero-bg.mp4" type="video/mp4">
+
+  <div class="hero-video-wrap">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="https://res.cloudinary.com/dg10qs6uf/video/upload/v1773139015/hero-bg.mp4_h4ebka.mp4" type="video/mp4">
     </video>
   </div>
   <div class="hero-bg"></div>
@@ -1029,42 +1029,42 @@ footer {
 
     <div class="gallery-item large">
       <!-- ★ REPLACE: gallery-1.jpg (large hero photo, 900×500px) -->
-      <img src="gallery-1.jpg"
+      <img src="https://hari-0805.github.io/gloss_garage/gallery-1.jpg"
            alt="Double foam car wash" loading="lazy" />
       <div class="gallery-overlay"><span class="gallery-tag">🫧 Double Foam Wash</span></div>
     </div>
 
     <div class="gallery-item">
       <!-- ★ REPLACE: gallery-2.jpg (500×400px) -->
-      <img src="gallery-2.jpg"
+      <img src="https://hari-0805.github.io/gloss_garage/gallery-2.jpg"
            alt="Car exterior wash" loading="lazy" />
       <div class="gallery-overlay"><span class="gallery-tag">✨ Exterior Wash</span></div>
     </div>
 
     <div class="gallery-item">
       <!-- ★ REPLACE: gallery-3.jpg (500×400px) -->
-      <img src="gallery-3.jpg"
+      <img src="https://hari-0805.github.io/gloss_garage/gallery-3.jpg"
            alt="Car interior vacuum" loading="lazy" />
       <div class="gallery-overlay"><span class="gallery-tag">🧹 Interior Vacuum</span></div>
     </div>
 
     <div class="gallery-item">
       <!-- ★ REPLACE: gallery-4.jpg (500×400px) -->
-      <img src="gallery-4.jpg"
+      <img src="https://hari-0805.github.io/gloss_garage/gallery-4.jpg"
            alt="Car detailing" loading="lazy" />
       <div class="gallery-overlay"><span class="gallery-tag">💎 Auto Detailing</span></div>
     </div>
 
     <div class="gallery-item">
       <!-- ★ REPLACE: gallery-5.jpg (500×400px) -->
-      <img src="gallery-5.jpg"
+      <img src="https://hari-0805.github.io/gloss_garage/gallery-5.jpg"
            alt="Mobile car wash at home" loading="lazy" />
       <div class="gallery-overlay"><span class="gallery-tag">🏠 At Your Doorstep</span></div>
     </div>
 
     <div class="gallery-item">
       <!-- ★ REPLACE: gallery-6.jpg (500×400px) -->
-      <img src="gallery-6.jpg"
+      <img src="https://hari-0805.github.io/gloss_garage/gallery-6.jpg"
            alt="Clean car result" loading="lazy" />
       <div class="gallery-overlay"><span class="gallery-tag">🌟 Spotless Result</span></div>
     </div>
