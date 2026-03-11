@@ -1810,13 +1810,13 @@ footer {
         // hide form fields
         document.querySelectorAll('#booking-form-wrap .form-group, #booking-form-wrap .form-row').forEach(function(el){ el.style.display='none'; });
       } else {
-        return res.text().then(function(t){ throw new Error(t); });
+        return res.text().then(function(t){ throw new Error('Status ' + res.status + ': ' + t); });
       }
     })
-    .catch(function(err) {
+ .catch(function(err) {
       btn.disabled = false;
       btn.textContent = '🚗 Confirm Booking';
-      errEl.textContent = 'Error: ' + err.message;
+      errEl.textContent = 'Error: ' + JSON.stringify(err);
       errEl.style.display = 'block';
       console.error(err);
     });
