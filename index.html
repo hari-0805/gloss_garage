@@ -1816,7 +1816,7 @@ footer {
     .catch(function(err) {
       btn.disabled = false;
       btn.textContent = '🚗 Confirm Booking';
-      errEl.textContent = 'Something went wrong. Please try again or WhatsApp us.';
+      errEl.textContent = 'Error: ' + err.message;
       errEl.style.display = 'block';
       console.error(err);
     });
