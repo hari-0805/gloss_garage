@@ -1407,8 +1407,9 @@ footer {
 
       <div class="form-row">
         <div class="form-group">
-          <label>Preferred Date</label>
+          <label>Preferred Date (Sat & Sun only)</label>
           <input type="date" id="f-date" />
+          <span id="date-msg" style="font-size:0.78rem; color:#ff6b6b; display:none;">⚠ We only operate on Saturdays & Sundays</span>
         </div>
         <div class="form-group">
           <label>Preferred Time</label>
@@ -1795,6 +1796,25 @@ footer {
   // ── Supabase Booking Form ──
   var SUPABASE_URL = 'https://syjfpprfkqkciuvmbwoq.supabase.co';
   var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN5amZwcHJma3FrY2l1dm1id29xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyMDE3MzIsImV4cCI6MjA4ODc3NzczMn0.gS4pxsUAYD12EJohYdCYD4AOwOQuGAYGC7DRAyKm_ZQ';
+
+  // ── Weekend-only date picker ──
+  (function() {
+    var dateInput = document.getElementById('f-date');
+    if (!dateInput) return;
+    var today = new Date();
+    dateInput.min = today.toISOString().split('T')[0];
+    dateInput.addEventListener('change', function() {
+      var selected = new Date(this.value + 'T00:00:00');
+      var day = selected.getDay(); // 0=Sun, 6=Sat
+      var msg = document.getElementById('date-msg');
+      if (day !== 0 && day !== 6) {
+        if (msg) msg.style.display = 'block';
+        this.value = '';
+      } else {
+        if (msg) msg.style.display = 'none';
+      }
+    });
+  })();
 
   function submitBooking() {
     var name    = document.getElementById('f-name').value.trim();
