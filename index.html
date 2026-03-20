@@ -947,6 +947,8 @@ footer {
 @media (max-width: 768px) {
   nav { padding: 14px 5vw; }
   .nav-links { display: none; }
+  .nav-cta { display: none; }
+  #hamburger-btn { display: block !important; }
   .hero { padding: 110px 5vw 60px; }
   .hero-car { width: 90vw; }
   .hero-stats { gap: 28px; }
@@ -1768,22 +1770,24 @@ footer {
 
   // ── Mobile hamburger menu ──
   var hamburger = document.createElement('button');
+  hamburger.id = 'hamburger-btn';
   hamburger.setAttribute('aria-label', 'Open menu');
-  hamburger.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="26" height="26"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
-  hamburger.style.cssText = 'display:none;background:none;border:none;cursor:pointer;padding:4px;';
+  hamburger.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="28" height="28"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+  hamburger.style.cssText = 'display:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;cursor:pointer;padding:6px 8px;margin-left:auto;';
   navEl.appendChild(hamburger);
 
   var mobileMenu = document.createElement('div');
   mobileMenu.id = 'mobile-menu';
-  mobileMenu.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(10,12,16,0.97);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:32px;';
+  mobileMenu.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(10,12,16,0.98);z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:28px;';
   mobileMenu.innerHTML = [
-    '<button id="close-menu" aria-label="Close menu" style="position:absolute;top:22px;right:6vw;background:none;border:none;cursor:pointer;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="28" height="28"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>',
-    '<a href="#how" style="color:white;text-decoration:none;font-size:1.6rem;font-family:\'Bebas Neue\',sans-serif;letter-spacing:2px;">How It Works</a>',
-    '<a href="#gallery" style="color:white;text-decoration:none;font-size:1.6rem;font-family:\'Bebas Neue\',sans-serif;letter-spacing:2px;">Gallery</a>',
-    '<a href="#pricing" style="color:white;text-decoration:none;font-size:1.6rem;font-family:\'Bebas Neue\',sans-serif;letter-spacing:2px;">Pricing</a>',
-    '<a href="#area" style="color:white;text-decoration:none;font-size:1.6rem;font-family:\'Bebas Neue\',sans-serif;letter-spacing:2px;">Service Area</a>',
-    '<a href="#careers" style="color:white;text-decoration:none;font-size:1.6rem;font-family:\'Bebas Neue\',sans-serif;letter-spacing:2px;">Careers</a>',
-    '<a href="#order" style="color:white;text-decoration:none;font-size:1.6rem;font-family:\'Bebas Neue\',sans-serif;letter-spacing:2px;background:#0057FF;padding:14px 36px;border-radius:50px;">Book Now</a>'
+    '<button id="close-menu" aria-label="Close menu" style="position:absolute;top:22px;right:6vw;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;cursor:pointer;padding:6px 8px;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="26" height="26"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>',
+    '<a href="#how" style="color:white;text-decoration:none;font-size:1.8rem;font-family:Impact,Arial,sans-serif;letter-spacing:3px;">HOW IT WORKS</a>',
+    '<a href="#gallery" style="color:white;text-decoration:none;font-size:1.8rem;font-family:Impact,Arial,sans-serif;letter-spacing:3px;">GALLERY</a>',
+    '<a href="#pricing" style="color:white;text-decoration:none;font-size:1.8rem;font-family:Impact,Arial,sans-serif;letter-spacing:3px;">PRICING</a>',
+    '<a href="#area" style="color:white;text-decoration:none;font-size:1.8rem;font-family:Impact,Arial,sans-serif;letter-spacing:3px;">SERVICE AREA</a>',
+    '<a href="#careers" style="color:white;text-decoration:none;font-size:1.8rem;font-family:Impact,Arial,sans-serif;letter-spacing:3px;">CAREERS</a>',
+    '<a href="#feedback" style="color:white;text-decoration:none;font-size:1.8rem;font-family:Impact,Arial,sans-serif;letter-spacing:3px;">FEEDBACK</a>',
+    '<a href="#order" style="color:white;text-decoration:none;font-size:1.8rem;font-family:Impact,Arial,sans-serif;letter-spacing:3px;background:#0057FF;padding:14px 40px;border-radius:50px;">BOOK NOW</a>'
   ].join('');
   document.body.appendChild(mobileMenu);
 
